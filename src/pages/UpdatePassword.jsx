@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import profileimg from "../assets/profileimg.png";
 
-const Profileupdate = () => {
-  // Initialize form data as empty, but use placeholder values in the inputs
+const UpdatePassword = () => {
+  // Initialize form data for new password and confirm password
   const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    dob: "",
-    gender: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
   });
 
   // Handle changes in form fields
@@ -21,8 +19,12 @@ const Profileupdate = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can make an API call to update the profile
-    alert("Profile updated successfully!");
+    if (formData.newPassword === formData.confirmPassword) {
+      // Make an API call to update the password
+      alert("Password updated successfully!");
+    } else {
+      alert("New password and confirm password do not match.");
+    }
   };
 
   return (
@@ -37,92 +39,60 @@ const Profileupdate = () => {
               alt="Profile"
               className="w-24 h-24 rounded-full border-4 border-gray-300 object-cover mb-4"
             />
-            <h2 className="text-2xl font-semibold text-gray-800">Edit Profile</h2>
+            <h2 className="text-2xl font-semibold text-gray-800">Change Password</h2>
           </div>
           <form onSubmit={handleSubmit}>
-            {/* Full Name */}
+            {/* Current Password */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-600 mb-1">
-                Enter Full Name
+                Current Password
               </label>
               <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
+                type="password"
+                name="currentPassword"
+                value={formData.currentPassword}
                 onChange={handleInputChange}
-                placeholder="Krishna Dunga"
+                placeholder="Enter current password"
                 className="w-full bg-gray-200 border border-[#02664AD9] rounded-lg p-2"
               />
             </div>
 
-            {/* Phone Number */}
+            {/* New Password */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-600 mb-1">
-                Phone Number
+                New Password
               </label>
               <input
-                type="text"
-                name="phone"
-                value={formData.phone}
+                type="password"
+                name="newPassword"
+                value={formData.newPassword}
                 onChange={handleInputChange}
-                placeholder="+91 1234567890"
+                placeholder="Enter new password"
                 className="w-full bg-gray-200 border border-[#02664AD9] rounded-lg p-2"
               />
             </div>
 
-            {/* Email */}
+            {/* Confirm Password */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-600 mb-1">
-                Email
+                Confirm New Password
               </label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
                 onChange={handleInputChange}
-                placeholder="Krishna@gmail.com"
+                placeholder="Confirm new password"
                 className="w-full bg-gray-200 border border-[#02664AD9] rounded-lg p-2"
               />
             </div>
 
-            {/* DOB */}
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-600 mb-1">
-                DOB
-              </label>
-              <input
-                type="date"
-                name="dob"
-                value={formData.dob}
-                onChange={handleInputChange}
-                className="w-full bg-gray-200 border border-[#02664AD9] rounded-lg p-2"
-              />
-            </div>
-
-            {/* Gender */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-600 mb-1">
-                Gender
-              </label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleInputChange}
-                className="w-full bg-gray-200 border border-[#02664AD9] rounded-lg p-2"
-              >
-                <option value="">Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            {/* Update Profile Button */}
+            {/* Update Password Button */}
             <button
               type="submit"
               className="w-full bg-[#02664A] text-white font-semibold py-2 rounded-lg hover:bg-opacity-90 transition"
             >
-              Update Profile
+              Update Password
             </button>
           </form>
         </div>
@@ -131,4 +101,4 @@ const Profileupdate = () => {
   );
 };
 
-export default Profileupdate;
+export default UpdatePassword;

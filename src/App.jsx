@@ -8,6 +8,10 @@ import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
 import Showall from './pages/Showall';
 import AllCategory from './pages/AllCategory'
+import FAQ from './components/FAQ';
+import UpdatePassword from './pages/UpdatePassword';
+import Setting from './pages/Setting';
+import About from './pages/About';
 function App() {
   return (
     <Router>
@@ -22,6 +26,11 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/update-profile" element={<UpdateProfile />} />
+        <Route path="/fnq" element={<FAQ />} />
+        <Route path="/settings" element={<Setting />} />
+        <Route path="/about" element={<About />} />
+        
+        <Route path="/updatepassword" element={<UpdatePassword />} />
       </Routes>
     </Router>
   );

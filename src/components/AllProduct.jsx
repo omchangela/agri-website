@@ -12,6 +12,7 @@ const ViewProduct = ({ product }) => {
   return (
     <div className="flex flex-col items-center text-center p-4 bg-white rounded-lg shadow-md">
       {/* Product Image */}
+      
       <img
         src={product.image}
         alt={product.name}

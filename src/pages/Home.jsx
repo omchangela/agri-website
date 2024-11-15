@@ -89,7 +89,7 @@ function Home() {
       {/* View Product and View More Heading */}
       <div className="flex justify-between items-center mt-6 px-4 mx-10">
         <h2 className="text-2xl font-bold">View Product</h2>
-        <h5 className="text-lg font-semibold text-blue-500 cursor-pointer">View More</h5>
+        <a href="#allprod" className="text-lg font-semibold text-blue-500 cursor-pointer">View More</a>
       </div>
 
       {/* Product Display */}
@@ -113,7 +113,7 @@ function Home() {
       </div>
 
       {/* View Product and View More Heading */}
-      <div className="flex justify-between items-center mt-6 px-4 mx-10">
+      <div className="flex justify-between items-center mt-6 px-4 mx-10" id="allprod">
         <h2 className="text-2xl font-bold">All Product</h2>
         <h5 className="text-lg font-semibold text-blue-500 cursor-pointer" onClick={handleViewAllClick}>View All</h5>
       </div>

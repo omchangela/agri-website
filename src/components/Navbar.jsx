@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleLogout = () => {
+    // Clear any authentication data (like tokens) here, if applicable
+    setDropdownOpen(false);
+    navigate('/login'); // Redirect to /login
   };
 
   return (
@@ -16,7 +23,7 @@ function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-green-500">
-          <img src={logo} alt="Logo" className="h-20 inline-block ml-6 w-40"/>
+          <img src={logo} alt="Logo" className="h-20 inline-block ml-6 w-40" />
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -51,10 +58,7 @@ function Navbar() {
               </Link>
               <button
                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-                onClick={() => {
-                  setDropdownOpen(false);
-                  // Add logout functionality here
-                }}
+                onClick={handleLogout} // Call handleLogout on click
               >
                 Logout
               </button>
@@ -92,9 +96,8 @@ function Navbar() {
                 <button
                   className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                   onClick={() => {
-                    setDropdownOpen(false);
+                    handleLogout();
                     setMobileMenuOpen(false);
-                    // Add logout functionality here
                   }}
                 >
                   Logout
